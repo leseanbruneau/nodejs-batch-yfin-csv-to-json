@@ -18,6 +18,7 @@ node yahooFinCsv2Json.js
 
 From project root directory, run the following command 
 
-json-server data/all-mrkt-ind.json
+json-server --watch data/all-mrkt-ind.json --port 3001
+
 
 
