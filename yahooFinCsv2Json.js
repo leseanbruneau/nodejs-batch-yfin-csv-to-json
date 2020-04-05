@@ -21,15 +21,19 @@ let jsonArray = csvArray => {
         // repDay
         //  date
         //  dayClose
-        //  dayRange
         //  prevDayChange
         //  prevDayPctChange
+        //  dayHigh
+        //  dayLow
+        //  dayRange
         repDay.push({
             "day": csvDay[0],
             "dayClose": parseFloat(csvDay[5]).toFixed(2),
-            "dayRange": parseFloat(csvDay[2] - csvDay[3]).toFixed(2),
             "dayPtsChgPrevDay": parseFloat(csvDay[5] - prevDayClose).toFixed(2),
-            "dayPctChgPrevDay": parseFloat(((csvDay[5] - prevDayClose) / prevDayClose) * 100).toFixed(2) + "%"
+            "dayPctChgPrevDay": parseFloat(((csvDay[5] - prevDayClose) / prevDayClose) * 100).toFixed(2) + "%",
+            "dayHigh": parseFloat(csvDay[2]).toFixed(2),
+            "dayLow": parseFloat(csvDay[3]).toFixed(2),
+            "dayRange": parseFloat(csvDay[2] - csvDay[3]).toFixed(2)
         })
     }
 
@@ -42,19 +46,19 @@ let jsonArray = csvArray => {
 let jsonFileBuild = (dowRepDay, nasdaqRepDay, sp500RepDay) => {
 
     let dowJson = {
-        "ticker": "^DJI",
+        "symbol": "^DJI",
         "name": "Dow Jones Industrial Average",
         "tradingdays": dowRepDay
     }
 
     let nasdaqJson = {
-        "ticker": "^IXIC",
+        "symbol": "^IXIC",
         "name": "NASDAQ",
         "tradingdays": nasdaqRepDay
     }
 
     let sp500Json = {
-        "ticker": "^GSPC",
+        "symbol": "^GSPC",
         "name": "S&P 500",
         "tradingdays": sp500RepDay
     }
